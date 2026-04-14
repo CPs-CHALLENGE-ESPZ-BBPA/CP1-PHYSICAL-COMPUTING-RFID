@@ -1,9 +1,8 @@
 #  O Caso da Smart Gym: A Evolução do Treino Digital
  
-Este projeto visa o desenvolvimento de um ecossistema de **Smart Stations** (Estações Inteligentes) projetado para replicar a atenção de um personal trainer presencial. O sistema garante que o aluno execute os exercícios com a técnica perfeita através do monitoramento de postura e desempenho em tempo real.
+Este projeto visa o desenvolvimento de um ecossistema de **Smart Stations** (Estações Inteligentes) projetado para replicar a atenção de um personal trainer presencial. O sistema garante que o aluno execute os exercícios com a técnica perfeita através do monitoramento de postura e desempenho em tempo real. O exercício escolhido foi o de tríceps.
  
 ###  Funcionalidades
-Com base nas exigências técnicas descritas no desafio oficial:
  
 * **Identificação por RFID**: Sistema integrado entre Arduino UNO e Python para leitura de cartões RFID, reconhecimento do ID do aluno via porta serial e validação do acesso à estação de treino.
 * **Captura Biométrica (Visão)**: Ativação automática da câmera após o login para extração das coordenadas (landmarks) das articulações do usuário em tempo real.
