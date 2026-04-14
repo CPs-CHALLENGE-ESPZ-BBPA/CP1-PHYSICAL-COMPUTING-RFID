@@ -1,8 +1,8 @@
-# 🏋️ O Caso da Smart Gym: A Evolução do Treino Digital
+#  O Caso da Smart Gym: A Evolução do Treino Digital
  
 Este projeto visa o desenvolvimento de um ecossistema de **Smart Stations** (Estações Inteligentes) projetado para replicar a atenção de um personal trainer presencial. O sistema garante que o aluno execute os exercícios com a técnica perfeita através do monitoramento de postura e desempenho em tempo real.
  
-### 🚀 Funcionalidades
+###  Funcionalidades
 Com base nas exigências técnicas descritas no desafio oficial:
  
 * **Identificação por RFID**: Sistema integrado entre Arduino UNO e Python para leitura de cartões RFID, reconhecimento do ID do aluno via porta serial e validação do acesso à estação de treino.
@@ -13,7 +13,7 @@ Com base nas exigências técnicas descritas no desafio oficial:
  
 ---
  
-### 👥 Equipe (Turma 3ESPZ)
+###  Equipe (Turma 3ESPZ)
 * **Albert Katri** - RM556544
 * **Bruno Leão** - RM555563
 * **Bruno Biletsky** - RM554739
@@ -21,7 +21,7 @@ Com base nas exigências técnicas descritas no desafio oficial:
  
 ---
  
-### 📋 Componentes e Bibliotecas
+###  Componentes e Bibliotecas
  
 #### 1. Hardware e Protocolos
 * **Microcontrolador**: Arduino UNO.
@@ -46,7 +46,7 @@ O projeto utiliza as seguintes dependências conforme importadas no código-font
  
 ---
  
-### 🔗 Acesso ao Projeto (Link e Imagem)
+###  Acesso ao Projeto (Link e Imagem)
 
  * **Link do vídeo:** https://youtu.be/mSKdgU0WgsM
 * **Link do Projeto (Wokwi):** https://wokwi.com/projects/461234007381623809
@@ -56,7 +56,7 @@ O projeto utiliza as seguintes dependências conforme importadas no código-font
  
 ---
  
-### 📐 Diagrama de Conexões
+###  Diagrama de Conexões
 O sistema integra o leitor RFID ao **Arduino UNO** utilizando a interface **SPI**. As conexões seguem o padrão de pinagem do UNO:
 * **SDA (SS)**: Pino 10
 * **SCK**: Pino 13
@@ -68,7 +68,7 @@ O sistema integra o leitor RFID ao **Arduino UNO** utilizando a interface **SPI*
  
 ---
  
-### 🔧 Instruções de Setup e Execução
+###  Instruções de Setup e Execução
  
 1. **Configuração do Hardware**: Realize a montagem conforme o diagrama esquemático e conecte o Arduino UNO ao computador via USB.
 2. **Firmware Arduino**: Carregue o código (.ino) para o UNO utilizando a IDE Arduino (certifique-se de que a biblioteca MFRC522 está instalada).
