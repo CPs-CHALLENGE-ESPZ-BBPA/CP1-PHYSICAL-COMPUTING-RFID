@@ -97,21 +97,26 @@ class SmartGymApp:
         self.update()
 
     def conectar_db(self):
+        # Ensure 'smart_gym.db' is in the exact same directory as the script.
         return sqlite3.connect('smart_gym.db')
 
     def validar_rfid(self, uid):
         try:
             conn = self.conectar_db()
             cursor = conn.cursor()
+            
+            # Fetching id, nome, exercicio, and repeticoes from the 'alunos' table
             cursor.execute("SELECT id, nome, exercicio, repeticoes FROM alunos WHERE uid = ?", (uid,))
             aluno = cursor.fetchone()
             
             if aluno:
-                # Registro automático do horário de acesso
+                # Registro automático do horário de acesso no campo 'ultimo_acesso'
                 agora = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
                 cursor.execute("UPDATE alunos SET ultimo_acesso = ? WHERE id = ?", (agora, aluno[0]))
                 conn.commit()
                 conn.close()
+                
+                # aluno[1] = nome, aluno[2] = exercicio, aluno[3] = repeticoes (objetivo)
                 return {"nome": aluno[1], "exercicio": aluno[2], "objetivo": aluno[3]}
             else:
                 conn.close()
@@ -155,13 +160,17 @@ class SmartGymApp:
                 # 1. Checa RFID (Arduino)
                 if self.arduino_conectado and self.ser.in_waiting > 0:
                     id_lido = self.ser.readline().decode('utf-8').strip()
-                    aluno = self.validar_rfid(id_lido)
-                    if aluno:
-                        print(f"Aluno Identificado: {aluno['nome']}")
-                        self.perfil_ativo = aluno
-                        self.iniciar_treino()
-                    else:
-                        print(f"ID {id_lido} nao cadastrado.")
+                    
+                    # NOVA VALIDAÇÃO: Garante que a string recebida tem tamanho de um UID (ex: 7A:24:88:19)
+                    # Isso evita que linhas em branco ou ruídos causem consultas vazias no banco de dados.
+                    if len(id_lido) >= 11:
+                        aluno = self.validar_rfid(id_lido)
+                        if aluno:
+                            print(f"Aluno Identificado: {aluno['nome']}")
+                            self.perfil_ativo = aluno
+                            self.iniciar_treino()
+                        else:
+                            print(f"ID {id_lido} nao cadastrado no banco de dados.")
                 
             elif self.estado_app == "TREINO_EM_CURSO":
                 # IA e Processamento MediaPipe

@@ -21,8 +21,8 @@ def setup_db():
     alunos = [
         ("4A B9 3B 1B", "Lucas", "Rosca Direta", 5),
         ("B3 22 A1 0C", "Maria", "Rosca Direta", 8),
-        ("BD:84:7A:59", "Ronaldo", "Triceps", 10),
-        ("D6:EE:4C:1F", "Messi", "Triceps", 10),
+        ("7A:24:88:19", "Bruno", "Triceps", 10),
+        ("29:15:9B:99", "Paulo Akira", "Triceps", 10),
     ]
     
     cursor.executemany('''

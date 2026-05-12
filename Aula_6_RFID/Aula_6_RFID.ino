@@ -1,17 +1,18 @@
 #include <SPI.h>      // Biblioteca para barramento SPI
-#include <MFRC522.h>   // Biblioteca para o leitor RFID
+#include <MFRC522.h>  // Biblioteca para o leitor RFID
 
 #define SS_PIN 10  // Pino SDA (Slave Select)
 #define RST_PIN 9  // Pino de Reset
 
-MFRC522 rfid(SS_PIN, RST_PIN); // Passagem de parâmetros dos pinos
+MFRC522 rfid(SS_PIN, RST_PIN);
 
 void setup() {
   Serial.begin(9600);   // Inicializa a comunicação Serial
   SPI.begin();          // Inicializa o barramento SPI
   rfid.PCD_Init();      // Inicializa o módulo MFRC522
   
-  Serial.println("Aproxime sua tag do leitor...");
+  // REMOVIDO: Serial.println("Aproxime sua tag do leitor...");
+  // O Arduino não deve enviar texto, apenas o código do cartão.
 }
 
 void loop() {
@@ -31,8 +32,8 @@ void loop() {
   strID.toUpperCase(); // Deixa as letras em maiúsculo
   // --- FIM DO BLOCO ---
 
-  // Saída de dados apenas no Monitor Serial
-  Serial.print("Tag detectada! UID: ");
+  // Saída de dados apenas do UID limpo (ex: 7A:24:88:19)
+  // REMOVIDO: Serial.print("Tag detectada! UID: ");
   Serial.println(strID);
 
   rfid.PICC_HaltA();       // Para a leitura do cartão
